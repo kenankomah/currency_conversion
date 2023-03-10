@@ -10,8 +10,20 @@ import "./table.css";
 function App() {
     return (
         <div className="App">
-            {/* <CurrencyTable /> */}
-            <CurrencyList />
+            <header>
+                <nav className="navbar navbar-default">
+                    <div className="container">
+                        <div className="navbar-header" href="/">
+                            <a className="navbar-brand" href="/">
+                                ReactJS Currency App
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <CurrencyTable />
+            {/* <CurrencyList /> */}
         </div>
     );
 }

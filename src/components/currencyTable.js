@@ -5,7 +5,7 @@ import closeButton from "../assets/remove-circle.svg";
 function CurrencyTable() {
     return (
         <>
-            <header>
+            {/* <header>
                 <nav className="navbar navbar-default">
                     <div className="container">
                         <div className="navbar-header" href="/">
@@ -15,7 +15,7 @@ function CurrencyTable() {
                         </div>
                     </div>
                 </nav>
-            </header>
+            </header> */}
 
             <center className="ng-scope">
                 <p id="base">Select the base currency</p>
