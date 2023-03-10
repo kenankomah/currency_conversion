@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -12,7 +12,6 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 
 .App-header {
   background-color: #282c34;
@@ -36,4 +35,10 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+#container {
+  border: 1px #BDBDBD solid;
+  height: 440px;
+  background-color: #F8F8FC;
 }
