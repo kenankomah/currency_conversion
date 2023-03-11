@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import okIcon from "../assets/ok-icon.svg";
 
 function CurrencyList() {
@@ -286,7 +287,7 @@ function CurrencyList() {
                         </table>
 
                         <center>
-                            <a href="#/">
+                            <Link to="/">
                                 <button
                                     id="add"
                                     style={{ cursor: "pointer" }}
@@ -298,7 +299,7 @@ function CurrencyList() {
                                         Add selected currencies
                                     </span>
                                 </button>
-                            </a>
+                            </Link>
                         </center>
                         <p
                             ng-show="listNumCheck"

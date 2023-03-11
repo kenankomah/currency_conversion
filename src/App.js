@@ -1,31 +1,62 @@
 //began on 09/03/2023
-// import "bootstrap/dist/css/bootstrap.css";
-import CurrencyTable from "./components/currencyTable";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { React, useEffect, useState } from "react";
+import CurrencyConversionTable from "./components/currencyConversionTable";
 import CurrencyList from "./components/currencyList";
 import "./bootstrap.min.css";
 import "./App.css";
 import "./home.css";
 import "./table.css";
 
-function App() {
+const App = () => {
+    const [currencyRates, setCurrencyRates] = useState([]);
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch(
+                "http://www.apilayer.net/api/live?access_key=268e302bc6f31b42898248709bc63efd&format=1"
+            );
+            const data = await response.json();
+            let currencyArray = [];
+
+            console.log("data", data);
+            for (const [key, value] of Object.entries(data.quotes)) {
+                currencyArray.push(`${key}: ${value}`);
+            }
+            console.log("arr", currencyArray);
+            setCurrencyRates(currencyArray);
+        }
+        fetchData();
+    }, []);
+
     return (
-        <div className="App">
+        <>
             <header>
                 <nav className="navbar navbar-default">
                     <div className="container">
-                        <div className="navbar-header" href="/">
-                            <a className="navbar-brand" href="/">
-                                ReactJS Currency App
-                            </a>
+                        <div className="navbar-header">
+                            <a className="navbar-brand">ReactJS Currency App</a>
                         </div>
                     </div>
                 </nav>
             </header>
-
-            <CurrencyTable />
-            {/* <CurrencyList /> */}
-        </div>
+            <Router>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <CurrencyConversionTable
+                                currencyRates={currencyRates}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/currencies-list"
+                        element={<CurrencyList currencyRates={currencyRates} />}
+                    />
+                </Routes>
+            </Router>
+        </>
     );
-}
+};
 
 export default App;
