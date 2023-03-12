@@ -5,8 +5,10 @@ import closeButton from "../assets/remove-circle.svg";
 function CurrencyConversionTable(props) {
     let { currencyRates } = props;
 
+    const initialConvertedCurrencies = ["USDCAD", "USDGBP", "USDEUR"];
+
     currencyRates = currencyRates.filter((currency) => {
-        return currency.split(":")[0] === "USDMUR";
+        return initialConvertedCurrencies.includes(currency.split(":")[0]);
     });
 
     return (
@@ -80,6 +82,11 @@ function CurrencyConversionTable(props) {
 
                         <tbody id="repeat">
                             {currencyRates.map((currency) => {
+                                const currencyShortName = currency
+                                    .split(":")[0]
+                                    .substring(3, 6);
+
+                                const rate = currency.split(":")[1];
                                 return (
                                     <tr key={currency}>
                                         <td id="size">
@@ -93,7 +100,7 @@ function CurrencyConversionTable(props) {
                                                 id="currency"
                                                 className="ng-binding"
                                             >
-                                                {currency.split(":")[0]}
+                                                {currencyShortName}
                                             </span>
                                         </td>
                                         <td
@@ -103,7 +110,7 @@ function CurrencyConversionTable(props) {
                                             <img height="15" alt="" />$
                                         </td>
                                         <td id="size2" className="ng-binding">
-                                            {currency.split(":")[1]}
+                                            {rate}
                                         </td>
                                         <td
                                             style={{ cursor: "pointer" }}

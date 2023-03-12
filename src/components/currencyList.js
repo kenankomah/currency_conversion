@@ -2,7 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import okIcon from "../assets/ok-icon.svg";
 
-function CurrencyList() {
+function CurrencyList(props) {
+    console.log("props", props);
+
+    let { currencyRates } = props;
+
     return (
         <>
             <div className="container">
@@ -23,266 +27,37 @@ function CurrencyList() {
                             </thead>
 
                             <tbody className="overflow">
-                                <tr>
-                                    <td className="left">
-                                        <img
-                                            ng-src="../currencyConverter/images/flags/usd.png"
-                                            width="20"
-                                            src="../currencyConverter/images/flags/usd.png"
-                                            alt=""
-                                        />
-                                        &nbsp; USD
-                                    </td>
-                                    <td
-                                        className="select"
-                                        ng-click="addCurrencies('usd')"
-                                    >
-                                        United States Dollar
-                                    </td>
-                                    <td>
-                                        <img
-                                            src={okIcon}
-                                            className="ok-icon"
-                                            alt=""
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="left">
-                                        <img
-                                            ng-src="../currencyConverter/images/flags/eur.png"
-                                            width="20"
-                                            src="../currencyConverter/images/flags/eur.png"
-                                            alt=""
-                                        />
-                                        &nbsp; EUR
-                                    </td>
-                                    <td
-                                        className="select"
-                                        ng-click="addCurrencies('eur')"
-                                    >
-                                        Euro
-                                    </td>
-                                    <td>
-                                        <img
-                                            src={okIcon}
-                                            className="ok-icon"
-                                            alt=""
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="left">
-                                        <img
-                                            ng-src="../currencyConverter/images/flags/gbp.png"
-                                            width="20"
-                                            src="../currencyConverter/images/flags/gbp.png"
-                                            alt=""
-                                        />
-                                        &nbsp; GBP
-                                    </td>
-                                    <td
-                                        className="select"
-                                        ng-click="addCurrencies('gbp')"
-                                    >
-                                        British Pound Sterling
-                                    </td>
-                                    <td>
-                                        <img
-                                            src={okIcon}
-                                            className="ok-icon"
-                                            alt=""
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="left">
-                                        {" "}
-                                        <img
-                                            ng-src="../currencyConverter/images/flags/cad.png"
-                                            width="20"
-                                            src="../currencyConverter/images/flags/cad.png"
-                                            alt=""
-                                        />
-                                        &nbsp; CAD
-                                    </td>
-                                    <td
-                                        className="select"
-                                        ng-click="addCurrencies('cad')"
-                                    >
-                                        Canadian Dollar
-                                    </td>
-                                    <td>
-                                        <img
-                                            src={okIcon}
-                                            className="ok-icon"
-                                            alt=""
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="left">
-                                        <img
-                                            ng-src="../currencyConverter/images/flags/aud.png"
-                                            width="20"
-                                            src="../currencyConverter/images/flags/aud.png"
-                                            alt=""
-                                        />
-                                        &nbsp; AUD
-                                    </td>
-                                    <td
-                                        className="select"
-                                        ng-click="addCurrencies('aud')"
-                                    >
-                                        Australian Dollar
-                                    </td>
-                                    <td>
-                                        <span
-                                            ng-show="checkAUD"
-                                            className="glyphicon glyphicon-ok ng-hide"
-                                        ></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="left">
-                                        <img
-                                            ng-src="../currencyConverter/images/flags/rub.png"
-                                            width="20"
-                                            src="../currencyConverter/images/flags/rub.png"
-                                            alt=""
-                                        />
-                                        &nbsp; RUB
-                                    </td>
-                                    <td
-                                        className="select"
-                                        ng-click="addCurrencies('rub')"
-                                    >
-                                        {" "}
-                                        Russian Ruble{" "}
-                                    </td>
-                                    <td>
-                                        <span
-                                            ng-show="checkRUB"
-                                            className="glyphicon glyphicon-ok ng-hide"
-                                        ></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="left">
-                                        <img
-                                            ng-src="../currencyConverter/images/flags/jpy.png"
-                                            width="20"
-                                            src="../currencyConverter/images/flags/jpy.png"
-                                            alt=""
-                                        />
-                                        &nbsp; JPY
-                                    </td>
-                                    <td
-                                        className="select"
-                                        ng-click="addCurrencies('jpy')"
-                                    >
-                                        {" "}
-                                        Japanese Yen
-                                    </td>
-                                    <td>
-                                        <span
-                                            ng-show="checkJPY"
-                                            className="glyphicon glyphicon-ok ng-hide"
-                                        ></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="left">
-                                        <img
-                                            ng-src="../currencyConverter/images/flags/inr.png"
-                                            width="20"
-                                            src="../currencyConverter/images/flags/inr.png"
-                                            alt=""
-                                        />
-                                        &nbsp; INR
-                                    </td>
-                                    <td
-                                        className="select"
-                                        ng-click="addCurrencies('inr')"
-                                    >
-                                        Indian Rupee
-                                    </td>
-                                    <td>
-                                        <span
-                                            ng-show="checkINR"
-                                            className="glyphicon glyphicon-ok ng-hide"
-                                        ></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="left">
-                                        <img
-                                            ng-src="../currencyConverter/images/flags/bgn.png"
-                                            width="20"
-                                            src="../currencyConverter/images/flags/bgn.png"
-                                            alt=""
-                                        />
-                                        &nbsp; BGN
-                                    </td>
-                                    <td
-                                        className="select"
-                                        ng-click="addCurrencies('bgn')"
-                                    >
-                                        Bulgarian Lev
-                                    </td>
-                                    <td>
-                                        <span
-                                            ng-show="checkBGN"
-                                            className="glyphicon glyphicon-ok ng-hide"
-                                        ></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="left">
-                                        <img
-                                            ng-src="../currencyConverter/images/flags/nzd.png"
-                                            width="20"
-                                            src="../currencyConverter/images/flags/nzd.png"
-                                            alt=""
-                                        />
-                                        &nbsp; NZD
-                                    </td>
-                                    <td
-                                        className="select"
-                                        ng-click="addCurrencies('nzd')"
-                                    >
-                                        New Zealand Dollar
-                                    </td>
-                                    <td>
-                                        <span
-                                            ng-show="checkNZD"
-                                            className="glyphicon glyphicon-ok ng-hide"
-                                        ></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="left">
-                                        <img
-                                            ng-src="../currencyConverter/images/flags/chf.png"
-                                            width="20"
-                                            src="../currencyConverter/images/flags/chf.png"
-                                            alt=""
-                                        />
-                                        &nbsp; CHF
-                                    </td>
-                                    <td
-                                        className="select"
-                                        ng-click="addCurrencies('chf')"
-                                    >
-                                        Swiss Franc
-                                    </td>
-                                    <td>
-                                        <span
-                                            ng-show="checkCHF"
-                                            className="glyphicon glyphicon-ok ng-hide"
-                                        ></span>
-                                    </td>
-                                </tr>
+                                {currencyRates.map((currency) => {
+                                    const currencyShortName = currency
+                                        .split(":")[0]
+                                        .substring(3, 6);
+                                    return (
+                                        <tr key={currency}>
+                                            <td className="left">
+                                                <img
+                                                    ng-src="../currencyConverter/images/flags/usd.png"
+                                                    width="20"
+                                                    src="../currencyConverter/images/flags/usd.png"
+                                                    alt=""
+                                                />
+                                                &nbsp; {currencyShortName}
+                                            </td>
+                                            <td
+                                                className="select"
+                                                ng-click="addCurrencies('usd')"
+                                            >
+                                                United States Dollar
+                                            </td>
+                                            <td>
+                                                <img
+                                                    src={okIcon}
+                                                    className="ok-icon"
+                                                    alt=""
+                                                />
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
                             </tbody>
                         </table>
 

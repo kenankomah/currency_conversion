@@ -7,15 +7,18 @@ import "./bootstrap.min.css";
 import "./App.css";
 import "./home.css";
 import "./table.css";
+import apiData from "./apiData.json";
 
 const App = () => {
     const [currencyRates, setCurrencyRates] = useState([]);
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(
-                "http://www.apilayer.net/api/live?access_key=268e302bc6f31b42898248709bc63efd&format=1"
-            );
-            const data = await response.json();
+            //  const response = await fetch(
+            //     "http://www.apilayer.net/api/live?access_key=268e302bc6f31b42898248709bc63efd&format=1"
+            // );
+            // const data = await response.json();
+
+            const data = apiData;
             let currencyArray = [];
 
             console.log("data", data);
